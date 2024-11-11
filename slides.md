@@ -24,20 +24,20 @@ layout: two-cols
 title: Overview
 ---
 
-<Toc minDepth="1" maxDepth="1"></Toc>
 
-
-::right::
 # My talk
 - Today, we'll explore mechanistic interpretability through a **layered approach**, I like to start afar and zoom in.
 - $\textrm{Intuition} > \textrm{maths}$ (in moderation)
 
+::right::
 
-<Cite input="10.23915/distill.00024.001" />
+<Transform :scale="0.8" origin="center">
+  <Toc minDepth="1" maxDepth="1"></Toc>
+</Transform>
 
 <!--
-Take a moment here to explain your background and why this topic is relevant.
-Mention that the talk will be structured in layers, reflecting how you approach learning.
+- Mathematical rigour is important but not paramount.
+- I want to equip people to go and seek knowledge themselves, so I'll focus on intuition and practical examples.
 -->
 
 ---
