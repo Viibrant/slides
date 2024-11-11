@@ -108,14 +108,56 @@ title: Representations are Key
 
 I *really* want to stress this.
 
-- **Predictive coding**: Like a neural network, our brain constantly updates its internal model of the world to minimise prediction errors.
+*What are representations?* 
+<v-clicks> 
+
+- Patterns that a model (whether biological or artificial) learns to make sense of inputs.
+- Encoded in the weights and parameters of a model.
+
+**Predictive coding**: Theory of brain function, idea that the brain constantly updates its internal model of the world to minimise prediction errors.
+
+</v-clicks>
+
+<v-clicks> 
+
+*Deep Learning vs Predictive Coding*
+
+- Neural networks: **Statistical patterns** stored in learnt weights.
+- Brain: **Continuous interaction** with real-world feedback.
+
+**Main takeaway**: Representations in neural nets are approximations of reality that are learned from data.
+
+</v-clicks>
 
 
-<!-- 
+<!--
+## Key points
 
+- Predictive coding is a theory of brain function.
+- Neural networks learn to model an approximation of reality.
+  - Their "reality" is defined by the data they’re trained on.
+  - They improve this approximation by minimising prediction errors (i.e., their loss function, which acts like a “score” for how well they’re doing).
+    - The loss function is defined by artificial constraints we set.
 
-Make points here on how a neural network takes in some data essentially twists and folds it into a representation that it can work with.
- -->
+- This approximation is essentially a representation of the world.
+
+- Our brains also build representations of the world, but:
+  - constrained by the laws of physics.
+  - Brain's learning process is driven by survival and continuous physical interaction with our surroundings.
+  - “reward function” is baked in by evolution
+
+- In deep learning, however, we have to define the constraints and objectives ourselves:
+  - What data to use
+  - What loss function to use
+  - What architecture to use
+  - What hyperparameters to set, etc.
+- Neural networks twist and fold data to build these learnt representations.
+  - But, we don't know what the twists and folds mean, and why they even work.
+
+Now we've spoken about how models learnt representations, let's discuss **why it's crucial to understand them**. 
+This isn't just theoretical, but has real-world implications for how we build safe and reliable AI systems.
+
+-->
 
 ---
 title: Why it matters
