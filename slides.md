@@ -164,16 +164,43 @@ title: Why it matters
 ---
 
 # Why Mechanistic Interpretability Matters
-- **Modern Deep Learning is an alchemy!** Attempting to craft a useful representation of the world without understanding the underlying mechanisms.
-- Fundamentally understanding the model's internal logic means we can model them and observe how they may behave in different scenarios. It also means we can begin **proving** properties about them and being able to **assure** that they will behave as expected.
-- **Trust & Safety**: We can trust models because we understand how they work and we can ensure they are safe.
-- **Debugging & Research**: Helps diagnose model failures, improves *robustness* and rapid prototyping.
-- **Alignment**: Ensures models behave in ways aligned with human intentions.
-- Overall, it’s about making AI systems **understandable and controllable**.
 
+ 
+**Modern deep learning** is often like an **alchemy** - we see results without fully understanding the mechanisms behind them.
+
+- **Trust & Safety**: 
+  - Ensure decisions are *understandable* and *safe*.
+  - Example: Autonomous vehicles making life-critical decisions
+- **Debugging & Research**: 
+  - *Diagnose* model failures and improve *robustness*.
+  - Example: Image classfiers mistaking wolves for huskies due to snow in the background.
+- **Alignment**
+  - Align models with human values and ethical guidelines.
+  - Example: Hiring algorithms that aren't discriminatory.
+
+If we can model the inner workings of a neural network, we can better understand and control its behaviour.
 <!--
 Emphasise how this work is directly tied to practical concerns in AI deployment.
 Use examples like autonomous vehicles making life-critical decisions.
+
+- Deep learning has done some cool stuff but we don't know why it works.
+- It would be really useful to know this for a few different reasons, that I've split up here.
+
+- Trust & Safety (Elaine Herzberg, 2018)
+  - Death of Elaine Herzberg by an Uber self-driving car in 2018.
+    - Didn't recognise her as she was jaywalking 
+    - Couldn't classify objects as a pedestrian unless they near a crosswalk/zebra crossing
+    - Braked just 1.3 seconds before impact,
+    - If we knew how the model worked, we could have prevented this. 
+    - Ideally during training you would analyse the model as part of the process, and check for things like generalisation.
+  - IBM Watson recommending "multiple examples of unsafe and incorrect treatment recommendations"
+
+- Debugging & Research
+  - **TODO**: Add image example
+
+- Alignment
+  - **TODO**: Amazon (?) example
+
 -->
 
 ---
