@@ -41,67 +41,61 @@ title: Overview
 -->
 
 ---
-title: Introduction
-layout: two-cols
----
-
-
-# What is Interpretability?
-
-- Interpretability is the ability to **explain** or **present** in understandable terms to a human.
-
-- More examples
-- More examples
-- More examples
-
-::right::
-
-```mermaid
-flowchart TB
-    Interpretability([Interpretability
-    Understanding what a model does and why
-    Ensures AI is explainable and trustworthy])
-    MechanisticInterpretability([Mechanistic Interpretability
-    Reverse-engineering neural networks
-    Understanding internal circuits])
-
-    %% Link to show that Mechanistic Interpretability is a subset of Interpretability
-    Interpretability --> MechanisticInterpretability
-
-    %% Styling for interpretability
-
-```
-<!--
-Here, you can provide real-world analogies to make it more relatable.
-E.g., "Imagine trying to fix a car without being able to look under the hood."
-Spend around 5-7 minutes explaining this.
--->
-
----
 title: Mechanistic Interpretability
 ---
 
 # Mechanistic Interpretability
+
 - Focuses on **how** neural networks learn and represent information.
-- It’s about reverse-engineering a model to derive **human-interpretable algorithms**.
-- Treat it as an ecosystem. There are **complex, emergent systems** that we can study much like the natural sciences.
-- *Analogy*: Extracting source code from a compiled binary.
-- *Goal*: Transforming black-box models into **transparent systems**.
+- It’s about reverse-engineering a model to derive **human-interpretable algorithms** from its learnt weights and activations.
+- Treat it as an **ecosystem**: complex, emergent systems that we study scientifically, much like biological organisms.
 
+<!--- 
+- Here we talk about interpretability, not explainability.
+- Explainability is about providing a reason for a decision, while interpretability is about understanding the model's internal workings. We want to dig in here
 
-
-Instead of just knowing *<ins>what</ins>* a model does, we want to understand *<ins>why</ins>* it does it.
-
-<!--
 - Moving away from treating neural networks as engineered system, and more as systems we study scientifically, like biological organisms or physical phenomena.  
 - This is why you see the shift from handcrafted features to learnt representations, because it's too complex to handcraft, instead we learn state.
 - We go with a data-driven approach and reverse-engineer the model after training to understand how it works.
-
-
 -->
 
 ---
+title: The Black-Box Analogy
+---
+
+# The Black-Box Analogy
+
+<v-clicks>
+
+- *Analogy*: Training a dog vs. debugging software:
+  - With a dog, you only adjust behaviour based on outputs (*what you see*).
+  - With traditional software, you can directly examine and fix the code.
+  - Neural networks are more like training a dog — we adjust based on results without seeing the inner workings.
+
+</v-clicks>
+
+<v-clicks>
+
+- The **black-box problem**:
+  - Neural networks can perform well, but we don’t always know *how* or *why* they reach certain decisions.
+  - Mechanistic interpretability aims to transform these black boxes into **transparent systems**.
+  
+We formulate a problem for a model to solve. It does it, we don't know how.
+
+</v-clicks>
+
+<!-- 
+- The term "black-box" gets thrown around a lot..
+- Reason is that the field is at the stage where we formulate a problem for a model to solve, and it does it. BUT we don't know how it does it.
+
+-- Mention Andrej Kapathy's Software 2.0 blog post?
+
+- This allows us to solve problems that are too complex to handcraft, but we lose the ability to understand how the model works.
+
+ -->
+---
 title: Representations are Key
+hide: true
 ---
 
 # Representations are Key
@@ -141,6 +135,160 @@ I *really* want to stress this.
 
 - This approximation is essentially a representation of the world.
 
+Now we've spoken about how models learnt representations, let's discuss **why it's crucial to understand them**. 
+This isn't just theoretical, but has real-world implications for how we build safe and reliable AI systems.
+
+-->
+
+---
+title: What Are Representations?
+---
+
+# Representations are Key
+
+I *really* want to stress this.
+
+*What are representations?* 
+<v-clicks> 
+
+- Neural networks learn **internal representations** of the inputs they've seen.
+- These are **patterns** that help the model understand and process the data to perform its task.
+- But it’s not just about isolated patterns — these patterns are **organised** into a structure.
+
+(Diagram of raw data being transformed into representations)
+
+</v-clicks>
+
+<!-- Notes:
+- Start by emphasizing that both biological and artificial systems rely on internal representations to process information.
+- Mention that representations are essentially the model’s internal understanding of reality, encoded in its structure.
+- Keep this simple to set the foundation. The audience should feel comfortable with the idea that a representation is an internal map.
+-->
+
+---
+title: Patterns Within Representations
+---
+
+# Patterns Within Representations
+
+<v-clicks> 
+
+- Think of representations as the **model’s way of organising patterns** from its input data.
+- These patterns can be **low-level** (e.g., edges, textures) or **high-level** (e.g., shapes, objects).
+
+</v-clicks>
+
+<v-clicks>
+
+- The patterns are **not explicitly defined** — they are learned from data during training.
+- These patterns are **grouped** and organised to form a cohesive internal understanding.
+
+(Diagram of early vs deep layers in a CNN)
+
+</v-clicks>
+
+
+<!-- 
+
+- Patterns are recurring structures or signals that a neural network detects in its input data.
+  - For instance:
+    - in images: edges, textures, or shapes
+    - in text: words, phrases, or sentence structures, sentiment
+    - in audio: pitch, tone, or phonemes
+
+Notes:
+- Explain that neural networks learn patterns autonomously. These patterns are stored in the network’s parameters.
+- Emphasize that at the start of training, the model doesn't know anything — it gradually discovers patterns that help it fit to the data.
+- Mention that these patterns are the building blocks for higher-level features.
+-->
+
+---
+title: From Patterns to Features
+---
+
+# From Patterns to Features
+
+<v-clicks>
+
+- A **feature** is a meaningful combination of patterns that the model finds useful for its task.
+- For instance, detecting **edges** in an image is a low-level pattern that helps the model recognise objects like faces or cars.
+
+</v-clicks>
+
+<v-clicks>
+
+- Features are **hierarchical** <Cite input="10.48550/arXiv.2006.13436" />:
+  - Early layers detect simple patterns like **edges or textures**.
+  - Deeper layers combine these patterns into more **complex structures** like shapes or object parts.
+
+- **How does this all come together?**:
+  - These features are not isolated but are organised in a **latent space**, where related features are grouped together.
+  - This latent space is what allows models to make nuanced distinctions (e.g., distinguishing between different breeds of dogs).
+(Diagram of a progression of features being combined to recognise a face)
+
+</v-clicks>
+
+
+<!-- 
+
+- A feature is a pattern that the model finds useful for its task. 
+  - For example, detecting the shape of a cat's ear in an image.
+
+- Features are hierarchical:
+  - Early layers detect simple patterns like edges or textures.
+  - Deeper layers combine these patterns into more complex structures like shapes or object parts.
+
+- In neural networks, features are a pattern of activations across neurons that represent a specific concept.
+  - For instance, a neuron might activate when it detects a vertical edge in an image.
+- In DeepDream, maximising the activation of a specific neuron and trying to guess what it represents.
+
+- This is where you make the transition from general patterns to specific features.
+- Use a visual showing how a CNN identifies edges, textures, and then more complex features like faces.
+- The key is to show that features are just patterns that have been identified as useful.
+-->
+
+---
+title: Latent Space
+---
+
+# Latent Space
+
+NOTE IMAGES AND STUFF
+
+So here you train a language model to predict the missing word in a sentence,
+You design the architecture in a way to have a bottle neck where the model has to learn a compressed representation of the sentence.
+This compressed representation is the latent space.
+Just so happens that semantics are encoded in this space, with similar sentences being close together.
+
+<!-- 
+- Neural networks look for patterns in data
+- Features are meaningful patterns that the model has learnt to recognise in the data
+- All these features are then organised in a latent space, grouping similar features together in a way that makes sense to the model and helps it to make decisions.
+-->
+
+---
+title: Deep Learning vs Brain Representations
+---
+
+# Deep Learning vs Brain Representations
+
+<v-clicks>
+
+- In deep learning, the model's “reality” is **statistical** — based on the data we train it with.
+- In the brain, reality is built from **continuous interaction** with the physical world.
+
+</v-clicks>
+
+<v-clicks>
+
+- Neural networks learn from static data; the brain learns from **dynamic feedback**.
+- *Predictive Coding (quick mention)*: The brain constantly updates its internal model to minimize prediction errors.
+
+**Main takeaway**: Neural networks build approximations, whereas brains adapt to real-time feedback.
+
+</v-clicks>
+
+<!--
 - Our brains also build representations of the world, but:
   - constrained by the laws of physics.
   - Brain's learning process is driven by survival and continuous physical interaction with our surroundings.
@@ -153,11 +301,8 @@ I *really* want to stress this.
   - What hyperparameters to set, etc.
 - Neural networks twist and fold data to build these learnt representations.
   - But, we don't know what the twists and folds mean, and why they even work.
-
-Now we've spoken about how models learnt representations, let's discuss **why it's crucial to understand them**. 
-This isn't just theoretical, but has real-world implications for how we build safe and reliable AI systems.
-
 -->
+
 
 ---
 title: Why it matters
@@ -196,7 +341,7 @@ Use examples like autonomous vehicles making life-critical decisions.
   - IBM Watson recommending "multiple examples of unsafe and incorrect treatment recommendations"
 
 - Debugging & Research
-  - **TODO**: Add image example
+  - **TODO**: Add image example http://arxiv.org/pdf/1602.04938
 
 - Alignment
   - **TODO**: Amazon (?) example
@@ -277,21 +422,6 @@ Use diagrams to show how different parts of a network handle different tasks.
 Encourage questions here to engage the audience.
 -->
 
----
-
-# The Big Picture
-- Mechanistic interpretability improves:
-  - **Model safety**: Reducing harmful outputs.
-  - **Efficiency**: Identifying and pruning redundant model parts.
-  - **Alignment**: Ensuring AI aligns with human values and ethics.
-- Future directions:
-  - Applying mechanistic interpretability to **AI safety** research.
-  - Using it to build more **trustworthy models** in critical applications.
-
-<!--
-This slide wraps up the core content.
-You can transition into a discussion about the future of AI interpretability here.
--->
 
 ---
 
