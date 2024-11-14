@@ -9,6 +9,7 @@ biblio:
   template: apa
 addons:
 - slidev-addon-citations
+mdc: true
 ---
 
 # Mechanistic Interpretability
@@ -31,7 +32,7 @@ title: Overview
 
 ::right::
 
-<Transform :scale="0.8" origin="center">
+<Transform :scale="0.6" origin="center">
   <Toc minDepth="1" maxDepth="1"></Toc>
 </Transform>
 
@@ -49,6 +50,9 @@ title: Mechanistic Interpretability
 - Focuses on **how** neural networks learn and represent information.
 - It’s about reverse-engineering a model to derive **human-interpretable algorithms** from its learnt weights and activations.
 - Treat it as an **ecosystem**: complex, emergent systems that we study scientifically, much like biological organisms.
+
+
+IS ECOSYSYTEM GOOD TO SAY HERE? IS IT WEIRD?
 
 <!--- 
 - Here we talk about interpretability, not explainability.
@@ -211,6 +215,7 @@ title: From Patterns to Features
 <v-clicks>
 
 - A **feature** is a meaningful combination of patterns that the model finds useful for its task.
+  - smallest units of how neural nets encode knowledge, such that features cannot be further decomposed into smaller, distinct concepts  <Cite  input="10.48550/arXiv.2404.14082"/>
 - For instance, detecting **edges** in an image is a low-level pattern that helps the model recognise objects like faces or cars.
 
 </v-clicks>
@@ -228,6 +233,9 @@ title: From Patterns to Features
 
 </v-clicks>
 
+MAYBE SIMPLIFY POINT ON LATENT SPACE?
+- Data is projected into a latent space and it learns how to represent that data as some meaningful features
+SPECIFICALLY COMPARE LATENT SPACE VS REPRESENTATION? SAME THING??
 
 <!-- 
 
@@ -252,6 +260,7 @@ title: Latent Space
 ---
 
 # Latent Space
+
 
 NOTE IMAGES AND STUFF
 
@@ -331,13 +340,11 @@ Use examples like autonomous vehicles making life-critical decisions.
 - Deep learning has done some cool stuff but we don't know why it works.
 - It would be really useful to know this for a few different reasons, that I've split up here.
 
-- Trust & Safety (Elaine Herzberg, 2018)
-  - Death of Elaine Herzberg by an Uber self-driving car in 2018.
+- Trust & Safety (2018)
+  - Death by an Uber self-driving car in 2018.
     - Didn't recognise her as she was jaywalking 
     - Couldn't classify objects as a pedestrian unless they near a crosswalk/zebra crossing
     - Braked just 1.3 seconds before impact,
-    - If we knew how the model worked, we could have prevented this. 
-    - Ideally during training you would analyse the model as part of the process, and check for things like generalisation.
   - IBM Watson recommending "multiple examples of unsafe and incorrect treatment recommendations"
 
 - Debugging & Research
@@ -431,17 +438,15 @@ Encourage questions here to engage the audience.
 - The future of AI depends on making these systems **transparent and trustworthy**.
 
 <!--
-Keep this concise. Reinforce the main takeaways and express optimism about future advancements.
+This is all new stuff, there is a lot that we are still learning and discovering.
+One day we will have a grand unified theory of neural networks, but we are not there yet.
 -->
 
 ---
+title: Thank you!
+hideInToc: true
+---
 
-# Q&A
-- Let’s discuss! What questions do you have?
-- Are there any areas you’d like to dive deeper into?
-- How can mechanistic interpretability impact your work?
+# Thank you! 🐵
 
-<!--
-Leave around 10-15 minutes for Q&A to engage with the audience.
-This is where you can explore specific topics they’re curious about.
--->
+## Any questions?
