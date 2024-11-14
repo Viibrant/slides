@@ -356,77 +356,330 @@ Use examples like autonomous vehicles making life-critical decisions.
 -->
 
 ---
-title: "Case Study 1: Feature Visualization"
+title: Maximising activations
 ---
-## Case Study 1: Feature Visualization
 
-- Visualising neuron activations to see what features a network responds to.
-- Example: Understanding how CNNs detect edges, textures, or object parts.
-- This helps reveal **hidden biases** or **unexpected correlations** in the model.
+# Maximising Neuron Activations
 
-<!--
-Walk the audience through a simple example, like how an image classifier recognises cats vs. dogs.
-Visual aids are key here — consider using diagrams to illustrate.
+<v-clicks>
+
+- One way to understand what a neuron is detecting is to **maximise its activation**.
+- By using **gradient ascent**, we adjust an input (usually noise) to maximize a neuron's response.
+- This reveals what patterns or features the neuron is sensitive to.
+
+</v-clicks>
+
+<div class="flex justify-center items-start space-x-8 mt-8 ">
+  <!-- First image on the left -->
+  <div class="flex flex-col items-center max-w-[50%]">
+    <img src="./assets/activation-examples.png" alt="Activation Examples" class="w-full h-auto" />
+    <p class="text-sm text-gray-500 mt-2 text-center">Activation Examples</p>
+  </div>
+  
+  
+  <!-- Stacked images on the right -->
+  <div class="flex flex-col max-w-[40%]">
+    <!-- Top image -->
+    <div class="flex flex-col items-center">
+      <img src="./assets/from-noise.png" alt="Neuron Activation" class="w-full h-auto" />
+      <p class="text-sm text-gray-500 mt-2 text-center">Optimising random noise</p>
+    </div>
+    <!-- Bottom image -->
+    <div class="flex flex-col items-center">
+      <img src="./assets/activation-features.png" alt="Activation Features" class="w-full h-auto" />
+      <p class="text-sm text-gray-500 mt-2 text-center">Activation Features</p>
+      <Cite input="10.23915/distill.00007"/>
+    </div>
+  </div>
+</div>
+
+<!-- 
+One way to interpret what a neuron is detecting is to maximise its activation.
+- We take an input, generally random noise, and adjust it to maximise the neuron's response.
+- Then after training, we can try to qualitatively interpret the image to understand what the neuron is sensitive to.
+
+- You can either pick a neuron at random if exploring, or target specific neurons that show high activation when you pass through a real sample
+
+
+- Purely optimising isn't so good because the network can cheat and find patterns that maximise the activation but aren't meaningful or don't necessarily correspond to human-interpretable features.
+  - Things like lots of noise and nonsensical high-frequency patterns.
+  - Don't fully understand why this happens, but seems related to strided convolutions and pooling operations.
+  - This is where some regularisation, some kind of prior, or constraint is applied.
+  - However am only scratching the surface here, and there's a lot more to this.
+
+ -->
+
+---
+title: "Honourable Mention: DeepDream"
+---
+
+# Honourable Mention: DeepDream
+
+<div class="flex justify-center items-start space-x-8 mt-8">
+  <!-- Left column with stacked images -->
+  <div class="flex flex-col space-y-6">
+    <!-- First DeepDream Image (Top) -->
+    <div class="flex flex-col items-center">
+      <img src="https://www.telegraph.co.uk/multimedia/archive/03370/doge_3370416k.jpg" alt="DeepDream Output" class="w-[300px] h-auto" />
+    </div> 
+    <!-- Third DeepDream Image (Bottom) -->
+    <div class="flex flex-col items-center">
+      <img src="https://fortune.com/img-assets/wp-content/uploads/2016/03/img2.png?w=1440&q=75" alt="DeepDream Fortune" class="w-[300px] h-auto" />
+    </div>
+  </div>
+
+  <!-- Right column with single image -->
+  <div class="flex flex-col items-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/%22Mona_Lisa%22_with_DeepDream_effect_using_VGG16_network_trained_on_ImageNet.jpg" alt="DeepDream Mona Lisa" class="w-[300px] h-auto" />
+  </div>
+</div>
+
+<!-- 
+Example with DeepDream (2015):
+  - Same concept, but starting with a real image and amplifying the activations in neurons that are already active.
+
+- So. I've been talking about one way we can interpret models by specifically looking at what individual neurons are sensitive to.
+- However, neural networks are not just isolated neurons doing their own thing, they are interconnected.
+- Just like in our brains they collaborate to form larger structures
+  - these structures are called circuits.
 -->
 
 ---
-title: "Case Study 2: Polysemantic Neurons"
+title: "Circuits: Claims"
 ---
 
-## Case Study 2: Polysemantic Neurons
+# Circuits: Claims
 
-- **Polysemantic neurons** encode multiple, unrelated concepts.
-- Example: A single neuron might respond to both "dog" and "snow" images.
-- Implication: Networks are highly compressed but may develop **spurious correlations**.
-- Can lead to model behaviours that are hard to predict.
+<v-clicks>
 
-<!--
-Use this slide to discuss the efficiency-vs-complexity trade-off in neural networks.
-Ask the audience for their thoughts on why compression might be a double-edged sword.
+**Three speculative claims about neural networks**:
+
+**Claim 1: Features**
+- Features are the fundamental unit of neural networks.
+- They correspond to directions. These features can be rigorously studied and understood.
+
+**Claim 2: Circuits**
+- Features are connected by weights, forming circuits.
+- These circuits can also be rigorously studied and understood.
+
+**Claim 3: Universality**
+- Analogous features and circuits form across models and tasks. 
+
+
+</v-clicks> 
+
+<!-- 
+This is all about zooming in now. 
+In science as new tools are developed, we can see things we couldn't see before. 
+  - For instance the microscope allowed us to see cells, and that opened up a whole new field of biology.
+  - Atomic theory, subatomic particles, neuroscience, etc.
+
+Remember, a feature is a pattern that the model finds useful for its task. 
+  - For instance, detecting the shape of a cat's ear in an image.
+  
+A “circuit” is a computational subgraph of a neural network. It consists of a set of features, and the weighted edges that go between them in the original network.
+
+- You can think of a circuit as an algorithm that the network has learned.
+- Circuits perform a computation by processing inputs and generating outputs.
+- They are discovered during training, so these algorithms are emergent, are more flexible and adaptive than handcrafted algorithms.
 -->
 
 ---
-title: "Case Study 3: Superposition in Neural Networks" 
+title: "Circuits: Features"
 ---
 
-# Case Study 3: Superposition in Neural Networks
+# Circuits: Features
 
-- **Superposition**: Networks reuse neurons to represent multiple features, depending on context.
-- This is an efficient use of resources but can lead to **overlapping activations**.
-- Example: A neuron activates for both "striped patterns" and "tigers."
+**Claim 1: Features**
+- Features are the fundamental unit of neural networks.
+- They correspond to directions. These features can be rigorously studied and understood.
 
-<!--
-Explain how this concept ties into polysemantic neurons but with a focus on context.
-Highlight the risks of superposition — like models making incorrect predictions when features overlap.
+![Pose-invariant dog detector](https://distill.pub/2020/circuits/zoom-in/images/dog-pose.png){width=75%}
+
+<!-- 
+
+Direction here means a direction in the space of activations of the network. Latent, not directly observable.
+
+- Claim 1:
+  - Evidence to support idea that neural networks consist of meaningful, understandable features. 
+  - Early layers detect simple patterns like edges or textures, while deeper layers combine these patterns into more complex structures like shapes or object parts.
+  - Only scratching the surface here. Noteworthy are polysemantic neurons which fire for multiple concepts.
+
+Considering this neuron here which appears to be a pose-invariant dog detector.
+ -->
+
+---
+title: "Circuits: Connections"
+---
+
+# Circuits: Connections
+
+**Claim 2: Circuits**
+- Features are connected by **weights**, forming **circuits**.
+- A circuit are akin to algorithms that the network has learnt.
+- Circuits can be rigorously studied to understand how **complex behaviours** emerge.
+
+<v-clicks>
+
+
+<div class="flex justify-center">
+  <img src="https://distill.pub/2020/circuits/zoom-in/images/dog-circuit.png" alt="Dog Head Circuit Example" class="max-h-full w-[70%] h-auto" />
+</div>
+
+</v-clicks>
+
+
+<!-- 
+Notes:
+- Circuits consist of tightly connected features that the network has learned to combine in a meaningful way.
+
+- **Example**: A circuit for recognising dogs
+  - Combines detectors for eyes, fur textures, and snouts.
+  - Image has two different pathways across three layers
+  - You can see that each pathway is actually mirrored:
+    - One is left-oriented, the other is right-oriented.
+    - At each step the pathways actually try to inhibit each other to sharpen the contrast between them.
+  - By the end he features are combined, giving you neurons which are invariant to the pose
+- There is no reason that the network had to learn this structure at all!
+- It could've just looked for a jumble of eyes, fur, and snout, but instead chose to recognise left/right orientation and to handle them separately
+  
 -->
 
 ---
+title: "Circuits: Superposition"
+---
 
-# Deep Dive: Inductive Biases
-- Neural networks have **built-in biases** due to their architecture.
-- These biases influence what a model is likely to learn.
-- Example: CNNs are biased towards spatial patterns, making them effective for images but less so for sequential data.
-- Understanding inductive biases is crucial for **model robustness**.
+# Circuits: Superposition
+**Claim 2: Circuits**
 
-<!--
-This is a good point to ask the audience if they've ever noticed strange model behaviours
-and tie it back to the concept of inductive biases.
+<img src="./assets/car-1.png" alt="Car Example 1" class="w-[100%] h-auto mx-auto" />
+
+<!-- 
+Another example of a circuit from InceptionV1.
+Looking at a neuron that detects cars.
+You can see in this that the neuron looks for:
+  - windows at the top and not at the bottom
+  - wheels at the bottom and not at the top
+  - and the car body, especially at the bottom
+- then combines these features for a car detector. 
+
+However something odd happens here  
+ -->
+
+
+---
+title: "Circuits: Superposition"
+hideInToc: true
+---
+
+# Circuits: Superposition
+**Claim 2: Circuits**
+
+<img src="./assets/car-2.png" alt="Car Example 1" class="w-[90%] h-auto mx-auto" />
+
+<!-- 
+The network decides to spread this car feature across many neurons!
+In particular it is mixing up its car detector with dog detector!
+- A neuron that responds to multiple concepts is called a polysemantic neuron.
+In its world dogs and cars are deeply intertwined for some reason.
+- The model deliberately taking this "pure neuron" and mixing it up with other features is known as superposition.
+  - Similar to radio frequencies:
+    - Radio frequencies are transmitted over the same medium (air) but at different frequencies
+    - Frequencies can overlap which can lead to interference
+    - But, you can use a fourier transform to decompose the signal into its constituent frequencies
+    - Think of a feature as a frequency, and the deeper layers as the decomposition.
+      - Network deciding whether an activation should be interpreted as "dog" or "car" based on the context.
+    - 
+- It is unknown why superposition occurs. Possibly to use fewer neurons to conserve them for other tasks.
+- Means that as long as you don't have dogs and cars in the same image, in a later layer the dog feature can be retrieved.
+  - Means you don't need to dedicate a neuron to each concept, but can share them across multiple concepts.
+
 -->
 
 ---
+title: "Circuits: Universality"
+---
 
-# Circuit Analysis: Discovering Modular Structures
-- Mechanistic interpretability involves identifying **circuits** or **modules** within networks.
-- These circuits act like **subroutines**, performing specialised tasks.
-- Example: Circuits responsible for sentiment analysis in text models.
-- Benefits:
-  - Better debugging
-  - More efficient models
-  - Insight into how neural networks generalise
+# Circuits: Universality
 
-<!--
-Use diagrams to show how different parts of a network handle different tasks.
-Encourage questions here to engage the audience.
+**Claim 3: Universality**
+- Analogous features and circuits form across **different models and tasks**.
+- Neural networks, even with varying architectures, tend to develop **similar internal features**.
+- This phenomenon is known as **convergent learning**.
+
+<br>
+
+<v-clicks>
+
+- For example, different vision models (like AlexNet, Inception, ResNet) independently develop detectors for:
+  - **Edges, textures** in early layers.
+  - **Curves, object parts** in deeper layers.
+
+</v-clicks>
+
+
+
+<!-- Notes:
+- Universality suggests that neural networks may converge on similar solutions, even if trained separately.
+- This is because certain patterns (like edges or curves) are universally useful for visual recognition.
+
+If this was false then not completely bad at all.
+- If we run with the cellular biology analogy, it would be like every species having cells with totally different organelles and proteins. If this were the case in real life we would only study humans and maybe a few other species.
+
+-->
+
+---
+title: "Circuits: Universality"
+hideInToc: true
+---
+
+# Circuits: Universality
+
+**Claim 3: Universality**
+
+<img src="./assets/universality.png" alt="Universality Example" class="w-[95%] h-auto mx-auto" />
+
+<!-- 
+Different architectures with different datasets all learn similar low and high-level features.
+This implies there are universal patterns in natural images that neural networks independently discover.
+
+ -->
+
+---
+title: "The Platonic Representation Hypothesis"
+layout: two-cols
+---
+
+# The Platonic Representation Hypothesis
+**Not Mechanistic Interpretability, but Deep Phenomena**
+
+
+
+- This phenomenon hints at a form of **convergent learning**, where networks independently develop analogous representations, like a shared **latent structure** across models.
+
+- **Relation to Universality**:
+  - It suggests that certain **features are not just artifacts** of specific architectures but are instead **intrinsic to the data itself**.
+
+
+::right::
+
+<div class="flex items-center justify-center h-full">
+  <img src="https://the-decoder.com/wp-content/uploads/2024/05/PRH-1-770x1014.png" alt="Platonic Representation" class="max-h-[80%] w-auto" />
+</div>
+
+<!-- Notes:
+
+- Deep phenomena: emergent, recurring patterns or behavours in networks that arise naturally, reflecting intrinsic properties of the data or models themselves
+
+- Based around the idea that e.g. images and text are projections of a common underlying reality, and that neural networks are learning to approximate this reality.
+- Learning to approximate this REGARDLESS of modality or architecture or objective
+
+- While mechanistic interpretability focuses on the **how** (reverse-engineering circuits), the Platonic Hypothesis focuses on **what** is being represented.
+
+- So, the universality claim earlier shows that neural networks independently discover simiilar internal features and circuits
+- Platonic Representation Hypothesis suggests that neural networks are trying to model fundamental patterns that reflect the structure of reality itself.
+
+
 -->
 
 
