@@ -29,10 +29,11 @@ title: Overview
 # My talk
 - Today, we'll explore mechanistic interpretability through a **layered approach**, I like to start afar and zoom in.
 - $\textrm{Intuition} > \textrm{maths}$ (in moderation)
+- Will be moving past some explanations. If there is appetite I may do a follow-up talk
 
 ::right::
 
-<Transform :scale="0.6" origin="center">
+<Transform :scale="0.71" origin="center">
   <Toc minDepth="1" maxDepth="1"></Toc>
 </Transform>
 
@@ -52,7 +53,6 @@ title: Mechanistic Interpretability
 - Treat it as an **ecosystem**: complex, emergent systems that we study scientifically, much like biological organisms.
 
 
-IS ECOSYSYTEM GOOD TO SAY HERE? IS IT WEIRD?
 
 <!--- 
 - Here we talk about interpretability, not explainability.
@@ -61,6 +61,9 @@ IS ECOSYSYTEM GOOD TO SAY HERE? IS IT WEIRD?
 - Moving away from treating neural networks as engineered system, and more as systems we study scientifically, like biological organisms or physical phenomena.  
 - This is why you see the shift from handcrafted features to learnt representations, because it's too complex to handcraft, instead we learn state.
 - We go with a data-driven approach and reverse-engineer the model after training to understand how it works.
+
+- How is it possible we have trained a model yet we cannot understand it?
+
 -->
 
 ---
@@ -159,7 +162,7 @@ I *really* want to stress this.
 - These are **patterns** that help the model understand and process the data to perform its task.
 - But it’s not just about isolated patterns — these patterns are **organised** into a structure.
 
-(Diagram of raw data being transformed into representations)
+<img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*DUTetXGgB0Za8phglTQGYw.gif" alt="Universality Example" class="w-[90%] h-auto mx-auto" />
 
 </v-clicks>
 
@@ -168,6 +171,37 @@ I *really* want to stress this.
 - Mention that representations are essentially the model’s internal understanding of reality, encoded in its structure.
 - Keep this simple to set the foundation. The audience should feel comfortable with the idea that a representation is an internal map.
 -->
+
+---
+title: What Are Representations?
+hideInToc: true
+---
+
+# Representations are Key
+
+I *really* want to stress this.
+
+*What are representations?* 
+<div class="flex gap-4">
+  
+  <div>
+    <Youtube id="joA6fEAbAQc?start=48" height=300 width=400 />
+  </div>
+  
+  <div>
+    <img src="https://www.researchgate.net/profile/Shaofan-Li/publication/329990010/figure/fig2/AS:709226452234240@1546104171462/llustration-of-neuron-structure-of-the-neural-network.ppm" />
+  </div>
+
+</div>
+
+
+<!-- Notes:
+- Start by emphasizing that both biological and artificial systems rely on internal representations to process information.
+- Mention that representations are essentially the model’s internal understanding of reality, encoded in its structure.
+- Keep this simple to set the foundation. The audience should feel comfortable with the idea that a representation is an internal map.
+-->
+
+
 
 ---
 title: Patterns Within Representations
@@ -187,7 +221,12 @@ title: Patterns Within Representations
 - The patterns are **not explicitly defined** — they are learned from data during training.
 - These patterns are **grouped** and organised to form a cohesive internal understanding.
 
-(Diagram of early vs deep layers in a CNN)
+<div class="flex flex-col items-center pt-8">
+  <img src="https://www.researchgate.net/profile/Saad-Albawi/publication/319253577/figure/fig1/AS:615410118455298@1523736614895/Learned-features-from-a-Convolutional-Neural-Network.png" />
+  <div class="text-center mt-2 text-gray-600">
+    Learnt features from a Convolutional Neural Network
+  </div>
+</div>
 
 </v-clicks>
 
@@ -227,15 +266,11 @@ title: From Patterns to Features
   - Deeper layers combine these patterns into more **complex structures** like shapes or object parts.
 
 - **How does this all come together?**:
-  - These features are not isolated but are organised in a **latent space**, where related features are grouped together.
+  - Features are not isolated but are organised in a **latent space**, with related features are grouped together.
   - This latent space is what allows models to make nuanced distinctions (e.g., distinguishing between different breeds of dogs).
-(Diagram of a progression of features being combined to recognise a face)
 
 </v-clicks>
 
-MAYBE SIMPLIFY POINT ON LATENT SPACE?
-- Data is projected into a latent space and it learns how to represent that data as some meaningful features
-SPECIFICALLY COMPARE LATENT SPACE VS REPRESENTATION? SAME THING??
 
 <!-- 
 
@@ -250,6 +285,9 @@ SPECIFICALLY COMPARE LATENT SPACE VS REPRESENTATION? SAME THING??
   - For instance, a neuron might activate when it detects a vertical edge in an image.
 - In DeepDream, maximising the activation of a specific neuron and trying to guess what it represents.
 
+- Data is projected into a latent space and it learns how to represent that data as some meaningful features
+SPECIFICALLY COMPARE LATENT SPACE VS REPRESENTATION? SAME THING??
+
 - This is where you make the transition from general patterns to specific features.
 - Use a visual showing how a CNN identifies edges, textures, and then more complex features like faces.
 - The key is to show that features are just patterns that have been identified as useful.
@@ -261,19 +299,66 @@ title: Latent Space
 
 # Latent Space
 
+<div class="flex flex-col items-center pt-8">
+  <img src="https://www.researchgate.net/publication/332679657/figure/fig1/AS:809485488640000@1570007788866/The-classical-king-woman-man-queen-example-of-neural-word-embeddings-in-2D-It.png" />
+  <div class="text-center mt-2 text-gray-600">
+    (Word2Vec, 2013)
+  </div>
+</div>
 
-NOTE IMAGES AND STUFF
+
+<!-- 
+- Neural networks look for patterns in data
+- Features are meaningful patterns that the model has learnt to recognise in the data
+- All these features are then organised in a latent space, grouping similar features together in a way that makes sense to the model and helps it to make decisions.
 
 So here you train a language model to predict the missing word in a sentence,
 You design the architecture in a way to have a bottle neck where the model has to learn a compressed representation of the sentence.
 This compressed representation is the latent space.
 Just so happens that semantics are encoded in this space, with similar sentences being close together.
 
-<!-- 
-- Neural networks look for patterns in data
-- Features are meaningful patterns that the model has learnt to recognise in the data
-- All these features are then organised in a latent space, grouping similar features together in a way that makes sense to the model and helps it to make decisions.
 -->
+
+---
+title: Latent Space
+hideInToc: true
+---
+
+# Latent Space
+
+
+<div class="flex flex-col items-center pt-8">
+  <img src="https://blog.keras.io/img/ae/autoencoder_schema.jpg" />
+  <div class="text-center mt-2 text-gray-600">
+    (Keras, 2016)
+  </div>
+</div>
+
+<!-- 
+Few ways to train a latent space, one common way is through something called an autoencoder
+- Essentially you take in input, force the network to compress it, then reconstruct it, and compare the reconstruction error
+- Doing this makes the network learn how to preserve information in the input by compressing it down and then using that to reconstruct it
+- Basically, taking in an image and representing it with numbers, then using those numbers to get the image back out
+- After training the middle most layer contains your latent space.
+ -->
+
+---
+title: Latent Space
+hideInToc: true
+---
+
+# Latent Space: Autoencoder
+
+<div class="flex flex-col items-center pt-8">
+  <img 
+    src="https://pyimagesearch.com/wp-content/uploads/2023/07/vanilla-AE.png" 
+    class="max-w-md w-full"
+  />
+</div>
+
+<!-- 
+- Another diagram, showing the bottleneck. This forces your network to learn a compression.a
+ -->
 
 ---
 title: Deep Learning vs Brain Representations
@@ -288,14 +373,17 @@ title: Deep Learning vs Brain Representations
 
 </v-clicks>
 
-<v-clicks>
+<v-click>
 
-- Neural networks learn from static data; the brain learns from **dynamic feedback**.
-- *Predictive Coding (quick mention)*: The brain constantly updates its internal model to minimize prediction errors.
+**Main takeaway**
 
-**Main takeaway**: Neural networks build approximations, whereas brains adapt to real-time feedback.
+- The mental models that our brain develop are constrained by physical reality
+- A neural network's "mental model" is constrained by what we apply:
+  - *What loss function to use*
+  - *What architecture to use*
+  - *What hyperparameters to use*
 
-</v-clicks>
+</v-click>
 
 <!--
 - Our brains also build representations of the world, but:
@@ -315,12 +403,16 @@ title: Deep Learning vs Brain Representations
 
 ---
 title: Why it matters
+layout: two-cols
 ---
 
 # Why Mechanistic Interpretability Matters
 
- 
+<Transform :scale="0.83" origin="top left">
+
 **Modern deep learning** is often like an **alchemy** - we see results without fully understanding the mechanisms behind them.
+
+<v-clicks>
 
 - **Trust & Safety**: 
   - Ensure decisions are *understandable* and *safe*.
@@ -331,11 +423,21 @@ title: Why it matters
 - **Alignment**
   - Align models with human values and ethical guidelines.
   - Example: Hiring algorithms that aren't discriminatory.
+</v-clicks>
 
-If we can model the inner workings of a neural network, we can better understand and control its behaviour.
-<!--
-Emphasise how this work is directly tied to practical concerns in AI deployment.
-Use examples like autonomous vehicles making life-critical decisions.
+</Transform>
+
+
+::right::
+
+
+<v-clicks>
+
+![](https://www.researchgate.net/profile/Jean-Michel-Loubes/publication/329277474/figure/fig1/AS:698344229842961@1543509647892/A-husky-on-the-left-is-confused-with-a-wolf-because-the-pixels-on-the-right.png)
+
+</v-clicks>
+
+<!-- 
 
 - Deep learning has done some cool stuff but we don't know why it works.
 - It would be really useful to know this for a few different reasons, that I've split up here.
@@ -351,9 +453,10 @@ Use examples like autonomous vehicles making life-critical decisions.
   - **TODO**: Add image example http://arxiv.org/pdf/1602.04938
 
 - Alignment
-  - **TODO**: Amazon (?) example
-
--->
+  - In 2018 Amazon scrapped their secret ML algorithm to filter out candidates
+  - Goal was: here are 100 applications, narrow down to the top five
+  - However discriminated against women as there are more men than women in tech and this bias affected the algorithm 
+  -->
 
 ---
 title: Maximising activations
@@ -367,7 +470,6 @@ title: Maximising activations
 - By using **gradient ascent**, we adjust an input (usually noise) to maximize a neuron's response.
 - This reveals what patterns or features the neuron is sensitive to.
 
-</v-clicks>
 
 <div class="flex justify-center items-start space-x-8 mt-8 ">
   <!-- First image on the left -->
@@ -392,6 +494,7 @@ title: Maximising activations
     </div>
   </div>
 </div>
+</v-clicks>
 
 <!-- 
 One way to interpret what a neuron is detecting is to maximise its activation.
