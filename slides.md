@@ -162,7 +162,7 @@ I *really* want to stress this.
 - These are **patterns** that help the model understand and process the data to perform its task.
 - But it’s not just about isolated patterns — these patterns are **organised** into a structure.
 
-<img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*DUTetXGgB0Za8phglTQGYw.gif" alt="Universality Example" class="w-[90%] h-auto mx-auto" />
+<img src="./assets/net-fitting.gif" alt="Universality Example" class="w-[90%] h-auto mx-auto" />
 
 </v-clicks>
 
@@ -189,11 +189,10 @@ I *really* want to stress this.
   </div>
   
   <div>
-    <img src="https://www.researchgate.net/profile/Shaofan-Li/publication/329990010/figure/fig2/AS:709226452234240@1546104171462/llustration-of-neuron-structure-of-the-neural-network.ppm" />
+    <img src="./assets/neuron.png" />
   </div>
 
 </div>
-
 
 <!-- Notes:
 - Start by emphasizing that both biological and artificial systems rely on internal representations to process information.
@@ -222,7 +221,7 @@ title: Patterns Within Representations
 - These patterns are **grouped** and organised to form a cohesive internal understanding.
 
 <div class="flex flex-col items-center pt-8">
-  <img src="https://www.researchgate.net/profile/Saad-Albawi/publication/319253577/figure/fig1/AS:615410118455298@1523736614895/Learned-features-from-a-Convolutional-Neural-Network.png" />
+  <img src="./assets/face-features.png" />
   <div class="text-center mt-2 text-gray-600">
     Learnt features from a Convolutional Neural Network
   </div>
@@ -300,7 +299,7 @@ title: Latent Space
 # Latent Space
 
 <div class="flex flex-col items-center pt-8">
-  <img src="https://www.researchgate.net/publication/332679657/figure/fig1/AS:809485488640000@1570007788866/The-classical-king-woman-man-queen-example-of-neural-word-embeddings-in-2D-It.png" />
+  <img src="./assets/word2vec.png" />
   <div class="text-center mt-2 text-gray-600">
     (Word2Vec, 2013)
   </div>
@@ -433,7 +432,8 @@ layout: two-cols
 
 <v-clicks>
 
-![](https://www.researchgate.net/profile/Jean-Michel-Loubes/publication/329277474/figure/fig1/AS:698344229842961@1543509647892/A-husky-on-the-left-is-confused-with-a-wolf-because-the-pixels-on-the-right.png)
+
+![](./assets/husky-snow.png)
 
 </v-clicks>
 
@@ -523,17 +523,17 @@ title: "Honourable Mention: DeepDream"
   <div class="flex flex-col space-y-6">
     <!-- First DeepDream Image (Top) -->
     <div class="flex flex-col items-center">
-      <img src="https://www.telegraph.co.uk/multimedia/archive/03370/doge_3370416k.jpg" alt="DeepDream Output" class="w-[300px] h-auto" />
+      <img src="./assets/deepdream-doge.png" alt="DeepDream Output" class="w-[300px] h-auto" />
     </div> 
     <!-- Third DeepDream Image (Bottom) -->
     <div class="flex flex-col items-center">
-      <img src="https://fortune.com/img-assets/wp-content/uploads/2016/03/img2.png?w=1440&q=75" alt="DeepDream Fortune" class="w-[300px] h-auto" />
+      <img src="./assets/deepdream-trippy.png" alt="DeepDream Fortune" class="w-[300px] h-auto" />
     </div>
   </div>
 
   <!-- Right column with single image -->
   <div class="flex flex-col items-center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/%22Mona_Lisa%22_with_DeepDream_effect_using_VGG16_network_trained_on_ImageNet.jpg" alt="DeepDream Mona Lisa" class="w-[300px] h-auto" />
+    <img src="./assets/deepdream-mona.jpg" alt="DeepDream Mona Lisa" class="w-[300px] h-auto" />
   </div>
 </div>
 
@@ -626,7 +626,7 @@ title: "Circuits: Connections"
 
 
 <div class="flex justify-center">
-  <img src="https://distill.pub/2020/circuits/zoom-in/images/dog-circuit.png" alt="Dog Head Circuit Example" class="max-h-full w-[70%] h-auto" />
+  <img src="./assets/dog-circuit.png" alt="Dog Head Circuit Example" class="max-h-full w-[70%] h-auto" />
 </div>
 
 </v-clicks>
@@ -767,7 +767,7 @@ layout: two-cols
 ::right::
 
 <div class="flex items-center justify-center h-full">
-  <img src="https://the-decoder.com/wp-content/uploads/2024/05/PRH-1-770x1014.png" alt="Platonic Representation" class="max-h-[80%] w-auto" />
+  <img src="./assets/platonic.png" alt="Platonic Representation" class="max-h-[80%] w-auto" />
 </div>
 
 <!-- Notes:
